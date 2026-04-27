@@ -12,3 +12,6 @@ jobs:
     steps:
       - name: Mostrar mensaje
         run: echo "Hola, mundo!"
+      - name: Fallo intencional
+        run: exit 1
+        
