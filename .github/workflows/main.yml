@@ -23,4 +23,12 @@ jobs:
 
       - name: Construir app con node
         run: npm install
+
+      - name: Verificar si app.js existe
+        run: |
+          if [ ! -f "$GITHUB_WORKSPACE/app.js" ]; then
+            echo "Error: app.js no encontrado"
+            exit 1
+          fi
+          echo "app.js encontrado, continuando con el workflow"
         
