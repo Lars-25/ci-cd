@@ -1,17 +1,26 @@
-name: Mi primer github action
+name: Pipeline de CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: ["main"]
   pull_request:
-    branches: [ main ]
+    branches: ["main"]
 
 jobs:
-  saludo:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Mostrar mensaje
         run: echo "Hola, mundo!"
-      - name: Fallo intencional
-        run: exit 1
+
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Construir app con node
+        run: npm install
         
